@@ -61,7 +61,7 @@ class StackTrace final {
     if (limit == -1) limit = std::numeric_limits<int>::max();
 
     StackTrace result;
-    const PyFrameObject* frame = PyThreadState_GET()->frame;
+    const PyFrameObject* frame = PyEval_GetFrame();
     int i = 0;
     for (; i < limit && frame != nullptr; frame = frame->f_back, ++i) {
       PyCodeObject* code_obj = frame->f_code;
