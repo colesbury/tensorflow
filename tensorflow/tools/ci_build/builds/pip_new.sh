@@ -475,8 +475,9 @@ install_tensorflow_pip() {
 
   # NOTE: pip install --upgrade pip leads to a documented TLS issue for
   # some versions in python
-  curl https://bootstrap.pypa.io/get-pip.py | ${PYTHON_BIN_PATH} || \
-    die "Error: pip install (get-pip.py) FAILED"
+  # nogil: don't replace built-in pip
+  #curl https://bootstrap.pypa.io/get-pip.py | ${PYTHON_BIN_PATH} || \
+  #  die "Error: pip install (get-pip.py) FAILED"
 
   # Check that requested python version matches configured one.
   check_python_pip_version

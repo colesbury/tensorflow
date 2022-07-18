@@ -24,7 +24,7 @@ limitations under the License.
 #include "tensorflow/core/platform/logging.h"
 
 namespace py = pybind11;
-constexpr int PY_MODULE_TYPE_TP_BASIC_SIZE = 56;
+constexpr int PY_MODULE_TYPE_TP_BASIC_SIZE = 72;
 
 struct FastModuleObject {
   // A dummy array that ensures enough size is reserved for FastModuleObject,

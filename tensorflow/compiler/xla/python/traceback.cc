@@ -72,8 +72,7 @@ std::shared_ptr<Traceback> Traceback::Get() {
     return nullptr;
   }
   auto tb = std::make_shared<Traceback>();
-  const PyThreadState* thread_state = PyThreadState_GET();
-  for (PyFrameObject* py_frame = thread_state->frame; py_frame != nullptr;
+  for (PyFrameObject* py_frame = PyEval_GetFrame(); py_frame != nullptr;
        py_frame = py_frame->f_back) {
     Py_INCREF(py_frame->f_code);
     tb->frames_.emplace_back(py_frame->f_code, py_frame->f_lasti);
